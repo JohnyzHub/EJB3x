@@ -1,0 +1,44 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.bookstore</groupId>
+    <artifactId>cdbookstore-consumer</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>cdbookstore-consumer</name>
+    <url>http://maven.apache.org</url>
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/fish.payara.extras/payara-embedded-all -->
+        <dependency>
+            <groupId>fish.payara.extras</groupId>
+            <artifactId>payara-embedded-all</artifactId>
+            <version>4.1.153</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.bookstore</groupId>
+            <artifactId>cdbookstore</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <mainClass>org.bookstore.consumer.BookConsumer</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
