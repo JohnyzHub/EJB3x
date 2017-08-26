@@ -59,7 +59,7 @@
             Inject session beans using @EJB or @Inject?
               As a thumb rule, use @Inject for local and no-interface session beans 
                 and @EJB to inject remote session beans.
-              Check this blog: http://www.adam-bien.com/roller/abien/entry/inject_vs_ejb
+              Check this blog:  http://www.adam-bien.com/roller/abien/entry/inject_vs_ejb
               and page 534 of Java EE 7 Developer Handbook
               and page 260 of Beginning java EE 7.
 
@@ -80,7 +80,7 @@
             Persistence types:
                 Resource_Local (Bean Managed Persistance)
                 JTA (Container Managed Persistence)
-                BMP vs CMP: http://tomee.apache.org/jpa-concepts.html
+                BMP vs CMP:  http://tomee.apache.org/jpa-concepts.html
               @PersistanceContext
               @DatasourceDefinition	
 
