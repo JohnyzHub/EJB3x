@@ -92,8 +92,7 @@
             Persistence types:
                 Resource_Local (Bean Managed Persistance)
                 JTA (Container Managed Persistence)
-                BMP vs CMP: 
-                              http://tomee.apache.org/jpa-concepts.html
+                BMP vs CMP: http://tomee.apache.org/jpa-concepts.html
               @PersistanceContext
               @DatasourceDefinition	
 
