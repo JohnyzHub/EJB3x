@@ -89,10 +89,13 @@
 
                     Session beans are implicitly transactional.
 
-            Persistence types:
-                Resource_Local (Bean Managed Persistance)
-                JTA (Container Managed Persistence)
+            Transaction types:
+                Resource_Local (Bean Managed Transaction)
+                JTA (Container Managed Transaction)
                 BMP vs CMP: http://tomee.apache.org/jpa-concepts.html
               @PersistanceContext
               @DatasourceDefinition	
 
+          CMT Transaction Attributes:
+                    Required, Requires_New, Mandatory, Supports, Not_Supported, Never 
+                    Worth checking the page#296 of Beginning Java EE 7 for tabular form.
