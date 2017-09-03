@@ -64,8 +64,8 @@
                           and @EJB to inject remote session beans.
                         Check this blog: 
                                         http://www.adam-bien.com/roller/abien/entry/inject_vs_ejb
-                        and page 534 of Java EE 7 Developer Handbook
-                        and page 260 of Beginning java EE 7.
+                        and page 534 of JEE7 DHandbook
+                        and page 260 of BJEE7.
 
             
             Timers can be created in two ways.
@@ -97,5 +97,35 @@
               @DatasourceDefinition	
 
           CMT Transaction Attributes:
-                    Required, Requires_New, Mandatory, Supports, Not_Supported, Never 
-                    Worth checking the page#296 of Beginning Java EE 7 for tabular form.
+                @TransactionAttribute -- Applies to method and/or class 
+                    Required -          Business method will be executed inside a transaction context. 
+                                        If the transaction not available a new transaction will be created.
+                    
+                    Mandatory -         Business method should be executed inside a transaction context
+                                        If the transaction does not available an exception will be raised.
+                    
+                    Requires_New -      Business method will always be executed inside a new transaction.
+                                        The current transaction (if exist) will be temporarily suspended 
+                                        before the method invocation, and resumes after the method completion.
+ 
+                    Supports -          Method execution should be inside the client's transaction context,
+                                        Method will be executed without a transaction context if no transaction 
+                                        available.
+                                        
+                    Not_Supported -     The method execution will always be outside transaction context, irrespective
+                                        of the existance of the transaction.
+                    
+                    Never  -            The method execution must not be performed inside a transaction context.
+                                        An exception will be raised if invoked inside a transaction.
+                                        
+                    Check the page#297 of BJEE7 for tabular form.
+
+          Exception Handling:
+                    SystemException:              Subclass of RuntimeException are knows as SystemException.
+                                                  EJB Container performs rollback automatically for these exception.
+                    
+                    ApplicationException:         A subclass of checked or unchecked exception that is annotated with
+                                                  @ApplicationException or xml equivalent in deployment descriptor file.
+                                                  Programmer defines the rollback strategy for these exceptions.
+                                                        rollback- true or false
+                     Check the page#300 of BJEE7 tabular form for better understanding.
