@@ -98,11 +98,12 @@
 
           CMT Transaction Attributes:
                 @TransactionAttribute -- Applies to method and/or class 
+                    
                     Required -          Business method will be executed inside a transaction context. 
                                         If the transaction not available a new transaction will be created.
                     
-                    Mandatory -         Business method should be executed inside a transaction context
-                                        If the transaction does not available an exception will be raised.
+                    Mandatory -         Business method should be executed inside a transaction context. 
+                                        If the transaction does not available an <b>exception</b> will be raised.
                     
                     Requires_New -      Business method will always be executed inside a new transaction.
                                         The current transaction (if exist) will be temporarily suspended 
@@ -116,7 +117,7 @@
                                         of the existance of the transaction.
                     
                     Never  -            The method execution must not be performed inside a transaction context.
-                                        An exception will be raised if invoked inside a transaction.
+                                        An <b>exception</b> will be raised if invoked inside a transaction.
                                         
                     Check the page#297 of BJEE7 for tabular form.
 
