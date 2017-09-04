@@ -97,10 +97,13 @@
                 @PersistanceContext
                 @DatasourceDefinition	
 
+          @TransactionManagement(TransactionManagementType.Container) -- Container Managed Transaction (Default)
+                                 TransactionManagementType.Bean -- Bean managed transaction.
+                                 
           CMT Transaction Attributes:
                 @TransactionAttribute -- Applies to method and/or class 
                     
-                    Required -          Business method will be executed inside a transaction context. 
+                    Required -(default) Business method will be executed inside a transaction context. 
                                         If the transaction not available a new transaction will be created.
                     
                     Mandatory -         Business method should be executed inside a transaction context. 
@@ -122,12 +125,26 @@
                                         
                     Check the page#297 of BJEE7 for tabular form.
 
-          Exception Handling:
-                    SystemException:              Subclass of RuntimeException are knows as SystemException.
-                                                  EJB Container performs rollback automatically for these exception.
+                 SessionContext.setRollbackOnly() - Sets the flag for the container to perform rollback at 
+                                                            the completion of transaction.
+          
+                 Exception Handling:
                     
-                    ApplicationException:         A subclass of checked or unchecked exception that is annotated with
-                                                  @ApplicationException or xml equivalent in deployment descriptor file.
-                                                  Programmer defines the rollback strategy for these exceptions.
+                    ApplicationException:         A subclass of checked or unchecked exception that is annotated 
+                                                  with @ApplicationException or xml equivalent in deployment 
+                                                  descriptor file. Programmer defines the rollback strategy for 
+                                                  these exceptions.
                                                         rollback- true or false
+                    
+                    SystemException:              Subclass of RuntimeException which is not annotated with 
+                                                  ApplicationException is known as SystemException.
+                                                  EJB Container performs rollback automatically for these exception.
+                                                                            
                      Check the page#300 of BJEE7 tabular form for better understanding.
+          
+          Bean Managed Transaction - 
+                    @Transactional - provides ability to declaratiely control transaction boundaries at class 
+                                                                                             and method level.
+                                        TxType.Required is default.
+                                        rollbackOn - rollbacks transaction on a set of declared exceptions.
+                                        donotrollbackon - do not perform rollback on a set of declared exceptions.
