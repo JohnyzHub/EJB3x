@@ -143,6 +143,9 @@
                      Check the page#300 of BJEE7 tabular form for better understanding.
           
           Bean Managed Transaction - 
+                    UserTransaction - Get access of user transaction using @Resource or SessionContext
+                                        and perform operations such as begin, commit and rollback.
+                    
                     @Transactional - provides ability to declaratiely control transaction boundaries at class 
                                                                                              and method level.
                                         TxType.Required is default.
