@@ -23,11 +23,15 @@
             @Startup – Eagerly initializes bean instance
             @DependsOn – States that the current bean is dependent on some other bean
             
-            @ConcurrencyManagement - 
+            @ConcurrencyManagement - Concurrency management makes sense only on singleton beans, 
+                                     as the same object is shared by multiple clients. But, this is not 
+                                     the case with stateless or stateful as each client has thier own object copy.
+
               Container Managed Concurrency(default) – Container controls the concurrent access
                 @Lock(LockType.READ/WRITE) – Specifies how the container must manage 
                                              the concurrency when client invokes a method call.
                                              Lock can be applied at method level and or class level.
+                                             Lock type WRITE is default.
               Bean Managed Concurrency – 
                               Bean is responsible to control concurrent access to methods.
                        @AccessTimeout(value, unit) – Duration that access attempt should be blocked before time out.
@@ -117,8 +121,8 @@
                                         Method will be executed without a transaction context if no transaction 
                                         available.
                                         
-                    Not_Supported -     The method execution will always be outside transaction context, irrespective
-                                        of the existance of the transaction.
+                    Not_Supported -     The method execution will always be outside transaction context, 
+                                        irrespective of the existance of the transaction.
                     
                     Never  -            The method execution must not be performed inside a transaction context.
                                         An exception will be raised if invoked inside a transaction.
