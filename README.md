@@ -2,9 +2,9 @@
 
 
           Session Bean Types:
-                  Stateless
-                  Stateful
-                  Singleton
+                  Stateless - bean instance per request
+                  Stateful - bean instance per client
+                  Singleton - bean instance per application
 
             JNDI Convension : 
                 java:<scope>[/app]/module/bean[!<fully-qualified-interface-name>]
@@ -24,8 +24,7 @@
             @DependsOn – States that the current bean is dependent on some other bean
             
             @ConcurrencyManagement - Concurrency management makes sense only on singleton beans, 
-                                     as the same object is shared by multiple clients. But, this is not 
-                                     the case with stateless or stateful as each client has thier own object copy.
+                                     as the same object is shared by multiple clients.
 
               Container Managed Concurrency(default) – Container controls the concurrent access
                 @Lock(LockType.READ/WRITE) – Specifies how the container must manage 
