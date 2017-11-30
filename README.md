@@ -20,7 +20,7 @@
             @EJB – Injects reference of session bean.
             @PostConstruct – Invokes the method immediately after the bean creation.
             @PreDestroy – Invokes the method immediately before the container destroys the bean.
-            @Startup – Eagerly initializes bean instance
+            @Startup – Eagerly initializes singleton bean instance
             @DependsOn – States that the current bean is dependent on some other bean
             
             @ConcurrencyManagement - Concurrency management makes sense only on singleton beans, 
