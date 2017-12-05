@@ -32,8 +32,8 @@
                                              Lock can be applied at method level and or class level.
                                              Lock type WRITE is default.
               Bean Managed Concurrency – 
-                              Bean is responsible to control concurrent access to methods.
-                       @AccessTimeout(value, unit) – Duration that access attempt should be blocked before time out.
+                        Bean is responsible to control concurrent access to methods.
+                 @AccessTimeout(value, unit) – Duration that access attempt should be blocked before time out.
                                         Value = 0: Concurrent access not permitted.
                                                 -1: Request will be blocked indefinitely until gets access.
                                                 >0: Time out value 
@@ -74,11 +74,11 @@
             Timers can be created in two ways.
               Declarative way: 
                   @Schedule, @Schedules or deployment descriptor
-                            Eg: This creates two timers one for every two hours and another every wed 2pm
-                              @Schedules({
-                                        @Schedule(hour="2"),
-                                        @Schedule(hour="14", dayOfWeek="Wed")
-                                        })
+                          Eg: This creates two timers one for every two hours and another every wed 2pm
+                            @Schedules({
+                                       @Schedule(hour="2"),
+                                       @Schedule(hour="14", dayOfWeek="Wed")
+                                      })
               Programatic way: 
                   TimerService interface with ScheduleExpression, to create the timer
                   @Timeout on callback method, to invoke the timer
@@ -100,7 +100,8 @@
                 @PersistanceContext
                 @DatasourceDefinition	
 
-          @TransactionManagement(TransactionManagementType.Container) -- Container Managed Transaction (Default)
+          @TransactionManagement(TransactionManagementType.Container)
+                                                  --Container Managed Transaction (Default)
                                  TransactionManagementType.Bean -- Bean managed transaction.
                                  
           CMT Transaction Attributes:
@@ -133,15 +134,15 @@
           
                  Exception Handling:
                     
-                    ApplicationException:         A subclass of checked or unchecked exception that is annotated 
-                                                  with @ApplicationException or xml equivalent in deployment 
-                                                  descriptor file. Programmer defines the rollback strategy for 
-                                                  these exceptions.
+                    ApplicationException:    A subclass of checked or unchecked exception that is annotated 
+                                             with @ApplicationException or xml equivalent in deployment 
+                                             descriptor file. Programmer defines the rollback strategy for 
+                                             these exceptions.
                                                         rollback- true or false
                     
-                    SystemException:              Subclass of RuntimeException which is not annotated with 
-                                                  ApplicationException is known as SystemException.
-                                                  EJB Container performs rollback automatically for these exception.
+                    SystemException:         Subclass of RuntimeException which is not annotated with 
+                                             ApplicationException is known as SystemException. EJB Container 
+                                             performs rollback automatically for these exception.
                                                                             
                      Check the page#300 of BJEE7 tabular form for better understanding.
           
@@ -149,8 +150,29 @@
                     UserTransaction - Get access of user transaction using @Resource or SessionContext
                                         and perform operations such as begin, commit and rollback.
                     
-                    @Transactional - provides ability to declaratiely control transaction boundaries at class 
-                                                                                             and method level.
-                                        TxType.Required is default.
-                                        rollbackOn - rollbacks transaction on a set of declared exceptions.
-                                        donotrollbackon - do not perform rollback on a set of declared exceptions.
+                    @Transactional - provides ability to declaratiely control transaction boundaries 
+                                                            at class and method level.
+                                   TxType.Required is default.
+                                   rollbackOn - rollbacks transaction on a set of declared exceptions.
+                                   donotrollbackon - do not perform rollback on a set of declared exceptions.
+
+
+          @ApplicationScoped vs @Singleton:
+
+                    ApplicationScoped belongs to CDI.	package javax.enterprise.context
+                    Singleton belongs to EJB.		Package import javax.inject
+
+          	In CDI you don't get concurrency management by default. 
+                    So @ApplicationScoped simply states the cardinality of the injected object. 
+                    That means it instructs the injection engine to create only one instance of 
+                    the injected bean and use it across all the application. But it does not enforce 
+                    any concurrency constraint.
+		
+                    Where as in case of singleton, in addition to instruct the application server to 
+                    create only one instance of the injected bean and use it across all the application, 
+                    it also instructs to manage concurrency. This transforms a regular bean to an EJB 
+                    and by default enforces @ConcurrencyManagement(ConcurrencyManagementType.CONTAINER) 
+                    and @Lock(LockType.WRITE).
+                    Please do remember @ConcurrencyManagement and @Lock are applicable only to Singletons 
+                                                                             but not to Stateless and Stateful.
+
