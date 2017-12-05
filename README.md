@@ -162,7 +162,7 @@
                     ApplicationScoped belongs to CDI.	package javax.enterprise.context
                     Singleton belongs to EJB.		Package import javax.inject
 
-          	In CDI you don't get concurrency management by default. 
+          	    In CDI you don't get concurrency management by default. 
                     So @ApplicationScoped simply states the cardinality of the injected object. 
                     That means it instructs the injection engine to create only one instance of 
                     the injected bean and use it across all the application. But it does not enforce 
