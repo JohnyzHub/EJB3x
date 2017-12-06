@@ -30,14 +30,14 @@
                 @Lock(LockType.READ/WRITE) – Specifies how the container must manage 
                                              the concurrency when client invokes a method call.
                                              Lock can be applied at method level and or class level.
-                            WRITE(Default) - Lock type WRITE is default. It is worth remembering that
-			    		     when a thread makes a call to this method, it locks not only that 
-					     method but also the whole bean class and other threads
-					     trying to access this bean (irrespecive of which method) will be kept 
-					     on wait until the the current thread finish its process or 
-					     the set timeout is reached which occurs first.
-			    READ           - Read allows multiple clients(threads) to access the method provided
-			    		     someother thread has not already locked the whole bean for writing(Lock.Write)
+                        WRITE(Default) - It is worth remembering that when a thread makes a call to this method, 
+					 it locks not only that method but also the whole bean class and other threads
+					 trying to access this bean (irrespecive of which method) will be kept 
+					 on wait until the the current thread finish its process or 
+					 the set timeout is reached whichever occurs first.
+			    READ       - Read allows multiple clients(threads) to access the method, provided
+			    		 someother thread has not already locked the whole bean for writing(Lock.Write).
+					 Read means no concurrency applied.
               Bean Managed Concurrency – 
                         Bean is responsible to control concurrent access to methods.
                  @AccessTimeout(value, unit) – Duration that access attempt should be blocked before time out.
