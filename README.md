@@ -38,6 +38,8 @@
 			    READ       - Read allows multiple clients(threads) to access the method, provided
 			    		 someother thread has not already locked the whole bean for writing(Lock.Write).
 					 Read means no concurrency applied.
+			Check official doc: https://javaee.github.io/tutorial/ejb-basicexamples003.html#GIPVI
+			
               Bean Managed Concurrency – 
                         Bean is responsible to control concurrent access to methods.
                  @AccessTimeout(value, unit) – Duration that access attempt should be blocked before time out.
