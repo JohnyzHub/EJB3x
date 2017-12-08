@@ -43,11 +43,14 @@
 							
               Bean Managed Concurrency – 
                         Bean is responsible to control concurrent access to methods.
-                 @AccessTimeout(value, unit) – Duration that access attempt should be blocked before time out.
+               
+	      @AccessTimeout(value, unit) – Duration that access attempt should be blocked before time out.
                                         Value = 0: Concurrent access not permitted.
                                                 -1: Request will be blocked indefinitely until gets access.
                                                 >0: Time out value 
                                                        Unit of type of java.util.concurrent.TimeUnit
+			Please note that this annotation may be used to singleton bean with container managed
+			concurrency or the stateful bean, to control the access time at the class level or method level.
 
 
             @Stateful(passivationCapable=false) – Deactivates passivation behaviour. It is true by default.
